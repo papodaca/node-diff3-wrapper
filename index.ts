@@ -41,10 +41,10 @@ try {
 class Diff3 {
 
   static diff(fileA: string, fileO: string, fileB:string, stdin?: string): Promise<string> {
-    return callChild(diff3Path, fileA, fileO, fileB);
+    return callChild(diff3Path, stdin, fileA, fileO, fileB);
   }
   static diffM(fileA: string, fileO: string, fileB: string, stdin?: string): Promise<string> {
-    return callChild(diff3Path, "-m", fileA, fileO, fileB);
+    return callChild(diff3Path, stdin, "-m", fileA, fileO, fileB);
   }
 }
 
