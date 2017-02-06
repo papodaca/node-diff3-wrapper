@@ -3,14 +3,29 @@ import * as path from "path";
 
 import { sync as which } from "which";
 
-function callChild(path, stdin, ...args): Promise<string> {
+interface ProcessResult {
+  stdout: string;
+  stderr: string;
+  statusCode: Number;
+}
+
+function callChild(path: string, stdin: string, allowFail: Number, ...args): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     if(!path) {
       return reject("")
     }
-    let proc = childProcess.exec(`${path} ${args.join(" ")}`, (err, stdout, stderr) => {
-      if(err) {
-        reject(err);
+    let proc = childProcess.spawn(path, args);
+    let stdout = "";
+    proc.stdout.on("data", (data) => {
+      stdout = stdout + data.toString();
+    });
+    proc.on("close", (code, signal) => {
+      if(code !== 0) {
+        if(allowFail && allowFail === code) {
+          resolve(stdout);
+        } else {
+          reject(code);
+        }
       } else {
         resolve(stdout);
       }
@@ -41,10 +56,10 @@ try {
 class Diff3 {
 
   static diff(fileA: string, fileO: string, fileB:string, stdin?: string): Promise<string> {
-    return callChild(diff3Path, stdin, fileA, fileO, fileB);
+    return callChild(diff3Path, stdin, null, fileA, fileO, fileB);
   }
   static diffM(fileA: string, fileO: string, fileB: string, stdin?: string): Promise<string> {
-    return callChild(diff3Path, stdin, "-m", fileA, fileO, fileB);
+    return callChild(diff3Path, stdin, 1, "-m", fileA, fileO, fileB);
   }
 }
 
