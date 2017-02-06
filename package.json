@@ -1,0 +1,28 @@
+{
+  "name": "@cloudstitch/node-diff3-wrapper",
+  "version": "0.1.0",
+  "description": "A very minimal wrapper around diff3.",
+  "private": false,
+  "main": "index.js",
+  "scripts": {
+    "install": "node install.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloudstitch/node-diff3-wrapper.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cloudstitch/node-diff3-wrapper/issues"
+  },
+  "homepage": "https://github.com/cloudstitch/node-diff3-wrapper#readme",
+  "devDependencies": {
+    "@types/jszip": "0.0.32",
+    "@types/node": "^7.0.4",
+    "typescript": "^2.1.5"
+  },
+  "dependencies": {
+    "jszip": "^3.1.3"
+  }
+}
