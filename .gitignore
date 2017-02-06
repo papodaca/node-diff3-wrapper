@@ -38,6 +38,7 @@ jspm_packages
 
 #generated js files
 *.js
+*.d.ts
 
 #downloaded windows exe
 bin/**

@@ -51,16 +51,12 @@ try {
     console.error("module node-diff3-wrapper requires gnu difftools to be on the path");
   }
 }
-
-
-class Diff3 {
-
-  static diff(fileA: string, fileO: string, fileB:string, stdin?: string): Promise<string> {
+export module Diff3 {
+  export function diff(fileA: string, fileO: string, fileB:string, stdin?: string): Promise<string> {
     return callChild(diff3Path, stdin, null, fileA, fileO, fileB);
   }
-  static diffM(fileA: string, fileO: string, fileB: string, stdin?: string): Promise<string> {
+  export function diffM(fileA: string, fileO: string, fileB: string, stdin?: string): Promise<string> {
     return callChild(diff3Path, stdin, 1, "-m", fileA, fileO, fileB);
   }
 }
-
 module.exports = Diff3;
