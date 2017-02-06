@@ -141,6 +141,7 @@ if(process.platform === "win32" && !diff3Path) {
     cleanExit = true;
   }, console.log).catch(console.log)
 } else {
-  console.log("This does not appear to be windows, skipping.")
+  console.log("This does not appear to be windows, skipping.");
+  cleanExit = true;
 }
 
