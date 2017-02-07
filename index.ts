@@ -47,7 +47,7 @@ try {
     diff3Path = which("diff3");
   }
 } catch(e) {
-  if(process.platform === "win32") {
+  if(process.platform !== "win32") {
     console.error("module node-diff3-wrapper requires gnu difftools to be on the path");
   }
 }

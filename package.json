@@ -1,6 +1,6 @@
 {
   "name": "@cloudstitch/node-diff3-wrapper",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A very minimal wrapper around diff3.",
   "private": false,
   "main": "index.js",
@@ -23,6 +23,7 @@
     "typescript": "^2.1.5"
   },
   "dependencies": {
-    "jszip": "^3.1.3"
+    "jszip": "^3.1.3",
+    "which": "^1.2.12"
   }
 }
