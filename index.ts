@@ -59,4 +59,3 @@ export module Diff3 {
     return callChild(diff3Path, stdin, 1, "-m", fileA, fileO, fileB);
   }
 }
-module.exports = Diff3;
