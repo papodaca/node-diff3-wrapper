@@ -9,7 +9,7 @@ npm install --save node-diff3-wrapper
 
 ## Usage
 ```js
-var diff3 = require(node-diff3-wrapper");
+var diff3 = require("node-diff3-wrapper");
 
 // three files on disk
 diff3.diff("/path/to/file/a", "/path/to/file/original", "/path/to/file/b").then((result) => {
