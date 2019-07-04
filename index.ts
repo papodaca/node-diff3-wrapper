@@ -9,7 +9,7 @@ interface ProcessResult {
   statusCode: Number;
 }
 
-function callChild(path: string, stdin: string, allowFail: Number, ...args): Promise<string> {
+function callChild(path: string, stdin: string | undefined, allowFail: Number | null, ...args): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     if(!path) {
       return reject("")
@@ -21,7 +21,7 @@ function callChild(path: string, stdin: string, allowFail: Number, ...args): Pro
     });
     proc.on("close", (code, signal) => {
       if(code !== 0) {
-        if(allowFail && allowFail === code) {
+        if(allowFail !== null && allowFail === code) {
           resolve(stdout);
         } else {
           reject(code);
@@ -31,7 +31,8 @@ function callChild(path: string, stdin: string, allowFail: Number, ...args): Pro
       }
     });
     if(stdin) {
-      proc.stdin.write(stdin)
+      proc.stdin.write(stdin);
+      proc.stdin.end();
     }
   });
 }
