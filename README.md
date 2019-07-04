@@ -4,12 +4,12 @@ This is a small utility wrapper around the command line tool diff3. On windows t
 
 ## Install
 ```
-npm install --save @cloudstitch/node-diff3-wrapper
+npm install --save node-diff3-wrapper
 ```
 
 ## Usage
 ```js
-var diff3 = require("@cloudstitch/node-diff3-wrapper");
+var diff3 = require(node-diff3-wrapper");
 
 // three files on disk
 diff3.diff("/path/to/file/a", "/path/to/file/original", "/path/to/file/b").then((result) => {
